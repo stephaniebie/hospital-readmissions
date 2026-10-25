@@ -1,0 +1,26 @@
+[project]
+name = "hospital-readmissions"
+version = "0.0.1"
+description = "CSCI 4502/5502 Project"
+requires-python = ">=3.10"
+authors = [
+    { name = "Ryan Kerwick" },
+    { name = "Tanmayee Potu" },
+    { name = "Jeremy Varghese" },
+    { name = "Stephanie Bie" },
+]
+dependencies = [
+    "ipykernel",
+    "jupyter",
+    "numpy",
+    "pandas",
+    "kagglehub",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
