@@ -12,9 +12,12 @@ authors = [
 dependencies = [
     "ipykernel",
     "jupyter",
+    "kagglehub",
+    "matplotlib",
     "numpy",
     "pandas",
-    "kagglehub",
+    "plotly",
+    "sklearn",
 ]
 
 [project.optional-dependencies]
