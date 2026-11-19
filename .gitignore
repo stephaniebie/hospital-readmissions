@@ -221,3 +221,10 @@ __marimo__/
 
 # Other
 *plots*
+# Project data (never commit; see docs/DATA.md)
+archive/
+data/
+cleaned_data/
+*.parquet
+*.csv
+!docs/**/*.csv
