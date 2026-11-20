@@ -15,9 +15,11 @@ dependencies = [
     "kagglehub",
     "matplotlib",
     "numpy",
-    "pandas",
+    "pandas>=2.2,<3",  # data-cleaning.ipynb breaks on pandas 3 (new string dtype)
     "plotly",
-    "sklearn",
+    "pyarrow",
+    "scikit-learn",
+    "scipy",
 ]
 
 [project.optional-dependencies]
