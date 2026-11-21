@@ -12,6 +12,18 @@ We use 5 of the files:
 | `DE1_0_2008_to_2010_Inpatient_Claims_Sample_1.csv` | claim segment | 66,773 | Hospital stays and the readmission label |
 | `DE1_0_2008_to_2010_Outpatient_Claims_Sample_1.csv` | claim segment | 790,790 | Prior outpatient / ER use before each admission |
 
+## CMS real-world comparison data (hospital level)
+
+The [CMS Provider Data Catalog readmissions search](https://data.cms.gov/provider-data/datasets?keyword%5B0%5D=Readmissions) includes **Unplanned Hospital Visits - Hospital** and **Unplanned Hospital Visits - State** tables. The hospital table reports facility-level 30-day measures (including condition-specific readmission rates and Hybrid HWR) over CMS reporting periods; it does not contain patient records or patient-level predictors. It can support descriptive comparisons of contemporary hospital performance, but cannot validate patient predictions, explain individual risk profiles, or be joined to the synthetic patient-level table. Do not pool its hospital rates with the synthetic stay labels.
+
+Download `Unplanned_Hospital_Visits-Hospital.csv` from its CMS dataset page, then prepare a long table and a facility-by-measure wide table:
+
+```bash
+python scripts/prepare_cms_readmissions.py path/to/Unplanned_Hospital_Visits-Hospital.csv
+```
+
+Outputs go to `cleaned_data/cms_readmissions/` and are ignored by git. The long file retains measure identifiers and reporting-period/footnote fields. The wide file pivots the CMS `Score` by facility and measure, keeping clinical measures separate. Scores remain in CMS units (typically percent); text suppression values become missing, never zero. Compare like measures and reporting periods only. The state table has a different grain and should be explored separately from facility rows.
+
 ## Getting it
 
 The raw data (about 220 MB) is **never committed**. Pick one option:
